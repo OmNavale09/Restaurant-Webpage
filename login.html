@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel = "stylesheet" href = "login.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="d-col-none col-md-2">
+            </div>
+            <div class="col-12 col-md-8 d-flex d-flex-row justify-content-center mt-5">
+                <div class="shadow login-container p-3 mt-3">
+                    <div class="text-center">
+                        <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/food-munch-img.png" class="icon" />
+                    </div>
+                    <h1 class="heading">Login</h1>
+                    <div class="p-3 mt-5 ml-3">
+                        <p>Username</p>
+                        <input type="text" class="input" id="userName" />
+                        <p id="erroruser"></p>
+                        <p class="mt-4">Password</p>
+                        <input type="password" class="input" id="userPassword" />
+                        <p id="errorpass"></p>
+                    </div>
+                    <div class="p-3  text-center mb-3">
+                        <button class="custom-button" onclick="login()">Login</button>
+                    </div>
+                    <p id="instruction"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let userInput = document.getElementById("userName");
+        let userpass = document.getElementById("userPassword");
+        let erroruser = document.getElementById("erroruser");
+        let errorpass = document.getElementById("errorpass");
+
+userInput.addEventListener("blur", function(event){
+    if(event.target.value === ""){
+        erroruser.textContent = "*Required";
+        erroruser.style.color = "red";
+    }
+    else{
+        erroruser.textContent = "";
+    }
+});
+userpass.addEventListener("blur", function(event){
+    if(event.target.value === ""){
+        errorpass.textContent = "*Required";
+        errorpass.style.color = "red";
+    }
+    else{
+        errorpass.textContent = "";
+    }
+});
+        let array = localStorage.getItem("UserFoodMuch");
+        array = JSON.parse(array);
+        function login(){
+            let para = document.getElementById("instruction");
+            let user = document.getElementById("userName").value;
+            let pass = document.getElementById("userPassword").value;
+            let flag = true;
+            for(let i of array){
+                if(i.name == user && i.password == pass){
+                    window.location.assign("restaurant.html");
+                    localStorage.setItem("userName",user);
+                    flag = true;
+                    break;
+                }
+                else {
+                    flag = false;
+                }
+            }
+            if(flag === false){
+                para.textContent = "Invalid User Name and Password";
+                para.style.color = "Red";
+            }
+        }
+    </script>
+</body>
+
+</html>

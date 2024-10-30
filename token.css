@@ -1,0 +1,40 @@
+.bg {
+    background-image: url("https://images.creativemarket.com/0.1.0/ps/518691/1360/906/m1/fpnw/wm1/lijivkz90nbfnnivj2dvluefjtnzoyrx6p4kjqew0ewsdlphsbqcl4ufpmsori4p-.jpg?1433922956&s=aff456e666ce72d8405f799e39718ac3");
+    height: 100vh;
+    background-size: cover;
+}
+
+.bg-2 {
+    height: 350px;
+    width: 700px;
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+}
+
+.img {
+    height: 100px;
+}
+
+.img-2 {
+    height: 100px;
+}
+
+.input {
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    padding-bottom: 2px;
+    border-width: 2px;
+    border-radius: 6px;
+}
+
+.input-2 {
+    width: 200px;
+    border-left: 0px;
+    border-right: 0px;
+    text-align: center;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
